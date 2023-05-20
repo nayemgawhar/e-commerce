@@ -1,0 +1,50 @@
+<!-- inheriting from the base file -->
+{% extends 'products/base.html' %}
+
+<!-- this will help render the images -->
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between">
+        <h3 class="pull-left">Welcome to E-commerce Site</h3>
+    </div>
+    <div class="row">
+        <!-- books here -->
+        <div class="col-12 mt-1">
+            <div class="row">
+
+                <div class="col-4">
+                    <div class="card my-2  bg-primary text-white">
+                        <a href="{% url 'home' %}" class="text-decoration-none">
+                            <div class="card-body bg-primary text-white d-flex justify-content-between">
+                                <h4>Total Categorys </h4>
+                                <h4>{{ categorys }}</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card my-2 bg-success text-white">
+                        <a href="{% url 'product-list' %}" class="text-decoration-none">
+                            <div class="card-body bg-success text-white d-flex justify-content-between">
+                                <h4>Total Products</h4>
+                                <h4>{{ products }}</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card my-2 bg-info text-white">
+                        <div class="card-body bg-info text-white d-flex justify-content-between">
+                            <h4>Total Orders</h4>
+                            <h4>{{ 0 }}</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

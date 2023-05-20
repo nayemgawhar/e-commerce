@@ -1,0 +1,31 @@
+{% extends 'categorys/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between">
+        <h3 class="pull-left">Category Details</h3>
+        <a href="{% url 'home' %}" class="m-2 btn btn-dark btn-sm pull-right ml-2">Category list</a>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <table class="table table-bordered border border-secondary">
+                        <thead class="border border-secondary">
+                            <tr class="border border-secondary">
+                                <th scope="col" class="border border-secondary" style="width: 50%;">Category Name</th>
+                                <th scope="col" class="border border-secondary" style="width: 50%;">Tags</th>
+                            </tr>
+                        </thead>
+                        <tbody class="border border-secondary">
+                            <tr class="border border-secondary">
+                                <td class="border border-secondary">{{ category.name }}</td>
+                                <td class="border border-secondary">{{ category.tags }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

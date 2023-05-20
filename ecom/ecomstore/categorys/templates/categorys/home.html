@@ -1,0 +1,53 @@
+<!-- inheriting from the base file -->
+{% extends 'categorys/base.html' %}
+
+<!-- this will help render the images -->
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between">
+        <h3 class="pull-left">Category list</h3>
+        <a href="{% url 'add-category' %}" class="m-2 btn btn-dark btn-sm pull-right ml-2">Add Category</a>
+    </div>
+    <div class="row">
+        <!-- books here -->
+        <div class="col-12 mt-1">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card my-2">
+                        <div class="card-body">
+                            <table class="table table-bordered border border-secondary" id="myDataTable">
+                                <thead class="border border-secondary">
+                                    <tr class="border border-secondary">
+                                        <th scope="col" class="border border-secondary" style="width: 4%;">Sl#</th>
+                                        <th scope="col" class="border border-secondary">Category Name</th>
+                                        <th scope="col" class="border border-secondary">Tags</th>
+                                        <th scope="col" class="border border-secondary" style="width: 20%;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="border border-secondary">
+                                    <!-- using a for loop to loop through all the categorys -->
+                                    {% for category in categorys %}
+                                    <tr class="border border-secondary">
+                                        <th scope="row" class="border border-secondary">{{forloop.counter}}</th>
+                                        <td class="border border-secondary">{{ category.name }}</td>
+                                        <td class="border border-secondary">{{ category.tags }}</td>
+                                        <td class="border border-secondary">
+                                            <a href="{% url 'edit-category' category.id %}" class="btn btn-primary btn-sm">Edit</a>
+                                            <a href="{% url 'delete-category' category.id %}" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="{% url 'category-detail' category.id %}" class="btn btn-success btn-sm">View</a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

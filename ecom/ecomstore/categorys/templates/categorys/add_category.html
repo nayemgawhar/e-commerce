@@ -1,0 +1,33 @@
+{% extends 'categorys/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between">
+        <h3 class="pull-left">Add Category</h3>
+        <a href="{% url 'home' %}" class="m-2 btn btn-dark btn-sm pull-right ml-2">Category list</a>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <!-- the form for adding a category -->
+                    <form method="POST" action="">
+                        <!-- this is for securing the form from malicious attacks -->
+                        {% csrf_token %}
+                        <!-- this is the label and input for the Title -->
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Category Name</label>
+                            <input required type="text" name="name" class="form-control" placeholder="Enter Category Name">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Tags</label>
+                            <input type="text" data-role="tagsinput" name="tags" class="form-control">
+                        </div>
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-success btn-block mb-4">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

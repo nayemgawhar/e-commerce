@@ -1,0 +1,55 @@
+{% extends 'categorys/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between">
+        <h3 class="pull-left">Add Product</h3>
+        <a href="{% url 'product-list' %}" class="m-2 btn btn-dark btn-sm pull-right ml-2">Product list</a>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <!-- the form for adding a category -->
+                    <form method="POST" action="" enctype="multipart/form-data">
+                        <!-- this is for securing the form from malicious attacks -->
+                        {% csrf_token %}
+                        <!-- this is the label and input for the Title -->
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Title</label>
+                            <input required type="text" name="title" class="form-control" value="{{ product.title }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Name</label>
+                            <input required type="text" name="name" class="form-control" value="{{ product.name }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Description</label>
+                            <textarea name="description" class="form-control">{{ product.description }}</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Tags</label>
+                            <input type="text" data-role="tagsinput" name="tags" class="form-control" value="{{ product.tags }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Category</label>
+                            <select class="form-select" name="category">
+                                <option selected>--select--</option>
+                                {% for category in categorys %}
+                                <option value="{{ category.id }}">{{ category.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <!-- this is the label and input for the Image -->
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Upload Image</label>
+                            <input required type="file" name="image-file" class="form-control" id="customFile" />
+                        </div>
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-success btn-block mb-4">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

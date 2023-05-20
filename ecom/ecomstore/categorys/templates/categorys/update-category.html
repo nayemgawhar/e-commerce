@@ -1,0 +1,25 @@
+{% extends 'categorys/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between">
+        <h3 class="pull-left">Category Details</h3>
+        <a href="{% url 'home' %}" class="m-2 btn btn-dark btn-sm pull-right ml-2">Category list</a>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <!-- the form for adding a category -->
+                    <form method="POST" enctype="multipart/form-data" action="">
+                        <!-- this is for securing the form from malicious attacks -->
+                        {% csrf_token %}
+                        <p>{{ form }}</p>
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-success btn-block mb-4">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

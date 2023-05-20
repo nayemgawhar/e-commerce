@@ -1,0 +1,25 @@
+{% extends 'categorys/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between">
+        <h3 class="pull-left">Category Delete</h3>
+        <a href="{% url 'home' %}" class="m-2 btn btn-dark btn-sm pull-right ml-2">Category list</a>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <!-- the form for deleting a book -->
+                    <form method="POST" action="">
+                        <!-- this is for securing the form from malicious attacks -->
+                        {% csrf_token %}
+                        <p>Are you sure! you want to delete this category <b class="text-danger">{{ category.name | upper}} ?</b></p>
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-danger btn-block mb-4">Confirm</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
